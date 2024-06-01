@@ -9,23 +9,45 @@ export default function Home() {
           Cake Bucket
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div className="relative w-full h-96">
+          <div className="relative w-full h-96 md:order-2">
             <Image
               src="/featured/featured1.jpg"
               alt="Featured Cake 1"
               fill
               style={{ objectFit: "cover" }}
               className="rounded-lg shadow-lg"
+              fetchPriority="high" // Correct attribute spelling
             />
           </div>
-          <div className="relative w-full h-96">
+          <div className="flex flex-col justify-center md:order-1">
+            <h2 className="text-3xl font-bold text-pink-700 mb-4">
+              About Cake Bucket
+            </h2>
+            <p className="text-lg text-gray-700">
+              At Cake Bucket, we specialize in creating custom-designed cakes
+              for all occasions. Our cakes are made with the finest ingredients
+              and designed with care.
+            </p>
+          </div>
+          <div className="relative w-full h-96 md:order-3">
             <Image
               src="/featured/featured2.jpg"
               alt="Featured Cake 2"
               fill
               style={{ objectFit: "cover" }}
               className="rounded-lg shadow-lg"
+              fetchPriority="high" // Correct attribute spelling
             />
+          </div>
+          <div className="flex flex-col justify-center md:order-4">
+            <h2 className="text-3xl font-bold text-pink-700 mb-4">
+              Our Commitment
+            </h2>
+            <p className="text-lg text-gray-700">
+              We are committed to delivering the best cakes for your special
+              occasions. Our team works closely with you to ensure every detail
+              is perfect.
+            </p>
           </div>
         </div>
         <div className="bg-pink-100 p-6 rounded-lg shadow-md mb-8">

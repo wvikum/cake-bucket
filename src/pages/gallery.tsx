@@ -24,7 +24,9 @@ export default function Gallery() {
   return (
     <Layout>
       <div className="w-full p-4 bg-gray-50">
-        <h1 className="text-4xl font-bold text-center mb-8">Gallery</h1>
+        <h1 className="text-5xl font-bold text-center text-pink-700 mb-8">
+          Gallery
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {images.map((src, index) => (
             <div
