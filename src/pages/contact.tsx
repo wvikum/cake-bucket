@@ -1,8 +1,9 @@
 import Layout from "../components/Layout";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Contact() {
+  const address = "10 Woodvale Road, Boronia Victoria 3155, Australia";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -104,10 +105,24 @@ export default function Contact() {
                 <strong>Cake Bucket</strong>
               </p>
               <p className="mb-2 text-gray-700">
-                10 Woodvale Road, Boronia Victoria 3155, Australia
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(
+                    address
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {address}
+                </a>
               </p>
-              <p className="mb-2 text-gray-700">0415 591 993</p>
-              <p className="mb-4 text-gray-700">cakebucketsl@gmail.com</p>
+              <p className="mb-2 text-gray-700">
+                <a href="tel:0415591993">0415 591 993</a>
+              </p>
+              <p className="mb-4 text-gray-700">
+                <a href="mailto:cakebucketsl@gmail.com">
+                  cakebucketsl@gmail.com
+                </a>
+              </p>
               <h3 className="text-2xl font-semibold text-pink-700 mb-4">
                 Hours
               </h3>
@@ -124,7 +139,7 @@ export default function Contact() {
               </ul>
               <div className="w-full h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509572!2d144.96305781561658!3d-37.81362774202185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577f60c121e3f0!2sBourke%20Street%20Mall!5e0!3m2!1sen!2sau!4v1632807729989!5m2!1sen!2sau"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.7182469790427!2d145.26986727589406!3d-37.86202207974445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63f08a0701f4b%3A0x35a75a23c5f4ec13!2s10%20Woodvale%20Rd%2C%20Boronia%20VIC%203155%2C%20Australia!5e0!3m2!1sen!2sus!4v1684082650048!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   frameBorder="0"

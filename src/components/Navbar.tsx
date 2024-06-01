@@ -10,7 +10,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-pink-300 p-5">
+    <nav className="bg-pink-200 p-5">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" legacyBehavior>
           <a className="cursor-pointer">

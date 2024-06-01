@@ -9,44 +9,67 @@ export default function Home() {
           Cake Bucket
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div className="relative w-full h-96 md:order-2">
+          <div className="relative w-full h-[700px] md:order-2">
             <Image
               src="/featured/featured1.jpg"
               alt="Featured Cake 1"
               fill
               style={{ objectFit: "cover" }}
               className="rounded-lg shadow-lg"
-              fetchPriority="high" // Correct attribute spelling
+              fetchPriority="high"
             />
           </div>
           <div className="flex flex-col justify-center md:order-1">
-            <h2 className="text-3xl font-bold text-pink-700 mb-4">
-              About Cake Bucket
-            </h2>
-            <p className="text-lg text-gray-700">
+            <h2 className="text-3xl font-bold text-pink-700 mb-4">About Us</h2>
+            <p className="text-1xl text-gray-700">
               At Cake Bucket, we specialize in creating custom-designed cakes
               for all occasions. Our cakes are made with the finest ingredients
               and designed with care.
             </p>
           </div>
-          <div className="relative w-full h-96 md:order-3">
+          <div className="relative w-full h-[700px] md:order-3">
             <Image
               src="/featured/featured2.jpg"
               alt="Featured Cake 2"
               fill
               style={{ objectFit: "cover" }}
               className="rounded-lg shadow-lg"
-              fetchPriority="high" // Correct attribute spelling
+              fetchPriority="high"
             />
           </div>
           <div className="flex flex-col justify-center md:order-4">
             <h2 className="text-3xl font-bold text-pink-700 mb-4">
               Our Commitment
             </h2>
-            <p className="text-lg text-gray-700">
+            <p className="text-1xl text-gray-700">
               We are committed to delivering the best cakes for your special
               occasions. Our team works closely with you to ensure every detail
               is perfect.
+            </p>
+          </div>
+          <div className="relative w-full h-[700px] md:order-5">
+            <Image
+              src="/featured/featured3.jpg"
+              alt="Featured Cake 3"
+              fill
+              style={{ objectFit: "cover" }}
+              className="rounded-lg shadow-lg"
+              fetchPriority="high"
+            />
+          </div>
+          <div className="flex flex-col justify-center md:order-4">
+            <h2 className="text-3xl font-bold text-pink-700 mb-4">
+              Our Passion
+            </h2>
+            <p className="text-1xl text-gray-700">
+              At Cake Bucket, our passion is crafting beautiful, delicious cakes
+              that bring joy to every celebration. We take pride in our artistry
+              and attention to detail, ensuring that each cake is a unique
+              masterpiece made with love and care. Whether it’s a birthday,
+              wedding, or any special occasion, our goal is to create cakes that
+              not only taste amazing but also leave a lasting impression. Join
+              us on a journey of delightful flavors and stunning designs, and
+              let us be a part of your sweetest moments.
             </p>
           </div>
         </div>
