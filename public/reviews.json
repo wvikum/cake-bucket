@@ -1,0 +1,32 @@
+[
+  {
+    "name": "John Doe",
+    "cakeType": "Birthday Cake",
+    "rating": 5,
+    "review": "The cake was absolutely delicious and beautifully decorated!"
+  },
+  {
+    "name": "Jane Smith",
+    "cakeType": "Wedding Cake",
+    "rating": 4,
+    "review": "The cake was great, but it arrived a bit late."
+  },
+  {
+    "name": "Alice Johnson",
+    "cakeType": "Anniversary Cake",
+    "rating": 5,
+    "review": "Perfect cake for our special day!"
+  },
+  {
+    "name": "Jane Smith",
+    "cakeType": "Wedding Cake",
+    "rating": 4,
+    "review": "The cake was great, but it arrived a bit late."
+  },
+  {
+    "name": "Alice Johnson",
+    "cakeType": "Anniversary Cake",
+    "rating": 5,
+    "review": "Perfect cake for our special day!"
+  }
+]
