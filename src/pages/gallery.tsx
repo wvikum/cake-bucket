@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import { getRandomImages } from "../utils/getRandomImages";
 import Image from "next/image";
 import GallerySlider from "../components/GallerySlider";
-import Draggable from "react-draggable";
 
 export default function Gallery() {
   const [images, setImages] = useState<string[]>([]);
@@ -33,19 +32,20 @@ export default function Gallery() {
         <div className="border p-4 bg-white shadow-md mt-8 mx-0">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1 mb-8">
             {images.map((src, index) => (
-              <Draggable key={index}>
-                <div className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-move">
-                  <Image
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    width={200}
-                    height={200}
-                    className="w-full h-auto object-cover"
-                    placeholder="blur"
-                    blurDataURL="/placeholder.jpg"
-                  />
-                </div>
-              </Draggable>
+              <div
+                key={index}
+                className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
+              >
+                <Image
+                  src={src}
+                  alt={`Gallery image ${index + 1}`}
+                  width={200}
+                  height={200}
+                  className="w-full h-auto object-cover"
+                  placeholder="blur"
+                  blurDataURL="/placeholder.jpg"
+                />
+              </div>
             ))}
           </div>
         </div>
