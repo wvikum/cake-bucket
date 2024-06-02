@@ -30,11 +30,11 @@ export default function Gallery() {
           Gallery
         </h1>
         <GallerySlider />
-        <div className="mx-4 md:mx-6 border p-4 bg-white rounded-lg shadow-md mt-8">
+        <div className="border p-4 bg-white shadow-md mt-8 mx-0">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1 mb-8">
             {images.map((src, index) => (
               <Draggable key={index}>
-                <div className="overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 cursor-move">
+                <div className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-move">
                   <Image
                     src={src}
                     alt={`Gallery image ${index + 1}`}
