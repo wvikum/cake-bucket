@@ -1,83 +1,97 @@
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const isActive = (pathname: string) => router.pathname === pathname;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="bg-pink-200 p-5">
+    <nav
+      className={`bg-pink-300 p-5 fixed w-full transition-all duration-300 ${
+        isScrolled ? "p-3" : "p-5"
+      }`}
+    >
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" legacyBehavior>
           <a className="cursor-pointer">
             <Image
               src="/logo/logo.png" // Replace with the path to your logo image
               alt="Cake Bucket Logo"
-              width={100} // Adjust width according to your logo dimensions
-              height={100} // Adjust height according to your logo dimensions
+              width={isScrolled ? 50 : 100} // Adjust width according to your logo dimensions
+              height={isScrolled ? 50 : 100} // Adjust height according to your logo dimensions
             />
           </a>
         </Link>
-        <div className="hidden md:flex space-x-8">
+        <div className="flex items-center space-x-8 ml-auto">
           <Link href="/gallery" legacyBehavior>
-            <a className="text-black hover:text-pink-700">Gallery</a>
-          </Link>
-          <Link href="/reviews" legacyBehavior>
-            <a className="text-black hover:text-pink-700">Reviews</a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a className="text-black hover:text-pink-700">Contact Us</a>
-          </Link>
-          <Link href="/order" legacyBehavior>
-            <a className="text-black hover:text-pink-700">How to Order</a>
-          </Link>
-        </div>
-        <div className="md:hidden">
-          <button
-            onClick={toggleMenu}
-            className="text-black focus:outline-none"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <a
+              className={`text-lg font-bold ${
+                isActive("/gallery")
+                  ? "text-pink-900"
+                  : "text-black hover:text-pink-700"
+              }`}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      {isOpen && (
-        <div className="md:hidden">
-          <Link href="/gallery" legacyBehavior>
-            <a className="block text-black hover:text-pink-700 p-2">Gallery</a>
+              Gallery
+            </a>
           </Link>
           <Link href="/reviews" legacyBehavior>
-            <a className="block text-black hover:text-pink-700 p-2">Reviews</a>
+            <a
+              className={`text-lg font-bold ${
+                isActive("/reviews")
+                  ? "text-pink-900"
+                  : "text-black hover:text-pink-700"
+              }`}
+            >
+              Reviews
+            </a>
           </Link>
           <Link href="/contact" legacyBehavior>
-            <a className="block text-black hover:text-pink-700 p-2">
+            <a
+              className={`text-lg font-bold ${
+                isActive("/contact")
+                  ? "text-pink-900"
+                  : "text-black hover:text-pink-700"
+              }`}
+            >
               Contact Us
             </a>
           </Link>
           <Link href="/order" legacyBehavior>
-            <a className="block text-black hover:text-pink-700 p-2">
+            <a
+              className={`text-lg font-bold ${
+                isActive("/order")
+                  ? "text-pink-900"
+                  : "text-black hover:text-pink-700"
+              }`}
+            >
               How to Order
             </a>
           </Link>
         </div>
-      )}
+        <div className="absolute right-0 top-0 mt-4 mr-4">
+          <a
+            href="tel:0415591993"
+            className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+          >
+            Call Us
+          </a>
+        </div>
+      </div>
     </nav>
   );
 }

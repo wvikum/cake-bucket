@@ -1,5 +1,6 @@
 import Layout from "../components/Layout";
 import Image from "next/image";
+import TestimonialSlider from "../components/TestimonialSlider";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
           Cake Bucket
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div className="relative w-full h-[700px] md:order-2">
+          <div className="relative w-full h-[500px] md:order-2">
             <Image
               src="/featured/featured1.jpg"
               alt="Featured Cake 1"
@@ -27,7 +28,7 @@ export default function Home() {
               and designed with care.
             </p>
           </div>
-          <div className="relative w-full h-[700px] md:order-3">
+          <div className="relative w-full h-[500px] md:order-3">
             <Image
               src="/featured/featured2.jpg"
               alt="Featured Cake 2"
@@ -47,7 +48,7 @@ export default function Home() {
               is perfect.
             </p>
           </div>
-          <div className="relative w-full h-[700px] md:order-5">
+          <div className="relative w-full h-[500px] md:order-5">
             <Image
               src="/featured/featured3.jpg"
               alt="Featured Cake 3"
@@ -57,7 +58,7 @@ export default function Home() {
               fetchPriority="high"
             />
           </div>
-          <div className="flex flex-col justify-center md:order-4">
+          <div className="flex flex-col justify-center md:order-6">
             <h2 className="text-3xl font-bold text-pink-700 mb-4">
               Our Passion
             </h2>
@@ -82,6 +83,7 @@ export default function Home() {
             now and get a special discount!
           </p>
         </div>
+        <TestimonialSlider />
         <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           <h2 className="text-3xl font-semibold text-center text-pink-700 mb-4">
             Subscribe to Our Newsletter
