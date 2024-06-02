@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import { getRandomImages } from "../utils/getRandomImages";
 import Image from "next/image";
+import GallerySlider from "../components/GallerySlider";
+import Draggable from "react-draggable";
 
 export default function Gallery() {
   const [images, setImages] = useState<string[]>([]);
@@ -27,24 +29,25 @@ export default function Gallery() {
         <h1 className="text-5xl font-bold text-center text-pink-700 mb-8">
           Gallery
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 mb-8">
-          {images.map((src, index) => (
-            <div
-              key={index}
-              className="overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300"
-            >
-              <Image
-                src={src}
-                alt={`Gallery image ${index + 1}`}
-                width={200} // Adjust the width and height as per your design
-                height={200} // Adjust the width and height as per your design
-                className="w-full h-auto"
-                objectFit="cover" // Maintain aspect ratio
-                placeholder="blur" // Optional: adds blur-up effect
-                blurDataURL="/placeholder.jpg" // Optional: placeholder image
-              />
-            </div>
-          ))}
+        <GallerySlider />
+        <div className="mx-4 md:mx-6 border p-4 bg-white rounded-lg shadow-md mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-1 mb-8">
+            {images.map((src, index) => (
+              <Draggable key={index}>
+                <div className="overflow-hidden rounded-lg hover:shadow-lg transition-shadow duration-300 cursor-move">
+                  <Image
+                    src={src}
+                    alt={`Gallery image ${index + 1}`}
+                    width={200}
+                    height={200}
+                    className="w-full h-auto object-cover"
+                    placeholder="blur"
+                    blurDataURL="/placeholder.jpg"
+                  />
+                </div>
+              </Draggable>
+            ))}
+          </div>
         </div>
         <div className="text-center text-pink-700 mt-8">
           <h2 className="text-4xl font-bold mb-4">
