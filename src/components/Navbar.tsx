@@ -14,65 +14,9 @@ export default function Navbar() {
   const isActive = (pathname: string) => router.pathname === pathname;
 
   return (
-    <nav className="bg-pink-300 p-5 z-50">
+    <nav className="bg-pink-300 p-0 z-50 relative">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" legacyBehavior>
-          <a className="cursor-pointer">
-            <Image
-              src="/logo/logo.png" // Replace with the path to your logo image
-              alt="Cake Bucket Logo"
-              width={100} // Adjust width according to your logo dimensions
-              height={100} // Adjust height according to your logo dimensions
-            />
-          </a>
-        </Link>
-        <div className="hidden md:flex space-x-8">
-          <Link href="/gallery" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 ${
-                isActive("/gallery") ? "text-pink-900 font-bold" : ""
-              }`}
-            >
-              Gallery
-            </a>
-          </Link>
-          <Link href="/reviews" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 ${
-                isActive("/reviews") ? "text-pink-900 font-bold" : ""
-              }`}
-            >
-              Reviews
-            </a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 ${
-                isActive("/contact") ? "text-pink-900 font-bold" : ""
-              }`}
-            >
-              Contact Us
-            </a>
-          </Link>
-          <Link href="/order" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 ${
-                isActive("/order") ? "text-pink-900 font-bold" : ""
-              }`}
-            >
-              How to Order
-            </a>
-          </Link>
-        </div>
-        <div className="hidden md:block">
-          <a
-            href="tel:0415591993"
-            className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
-          >
-            Call Us
-          </a>
-        </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
             className="text-black focus:outline-none"
@@ -93,6 +37,64 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
+        <div className="flex-grow flex justify-center md:justify-start">
+          <Link href="/" legacyBehavior>
+            <a className="cursor-pointer">
+              <Image
+                src="/logo/logo.png"
+                alt="Cake Bucket Logo"
+                width={120}
+                height={120}
+              />
+            </a>
+          </Link>
+        </div>
+        <div className="hidden md:flex space-x-12 transform -translate-x-8">
+          <Link href="/gallery" legacyBehavior>
+            <a
+              className={`text-black hover:text-pink-700 text-lg font-bold ${
+                isActive("/gallery") ? "text-pink-900" : ""
+              }`}
+            >
+              Gallery
+            </a>
+          </Link>
+          <Link href="/reviews" legacyBehavior>
+            <a
+              className={`text-black hover:text-pink-700 text-lg font-bold ${
+                isActive("/reviews") ? "text-pink-900" : ""
+              }`}
+            >
+              Reviews
+            </a>
+          </Link>
+          <Link href="/contact" legacyBehavior>
+            <a
+              className={`text-black hover:text-pink-700 text-lg font-bold ${
+                isActive("/contact") ? "text-pink-900" : ""
+              }`}
+            >
+              Contact Us
+            </a>
+          </Link>
+          <Link href="/order" legacyBehavior>
+            <a
+              className={`text-black hover:text-pink-700 text-lg font-bold ${
+                isActive("/order") ? "text-pink-900" : ""
+              }`}
+            >
+              How to Order
+            </a>
+          </Link>
+        </div>
+      </div>
+      <div className="hidden md:block absolute top-5 right-5">
+        <a
+          href="tel:0415591993"
+          className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+        >
+          Call Us
+        </a>
       </div>
       {isOpen && (
         <div className="md:hidden bg-pink-300 w-full p-2">
@@ -136,14 +138,16 @@ export default function Navbar() {
               How to Order
             </a>
           </Link>
-          <a
-            href="tel:0415591993"
-            className="block bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300 mt-2"
-          >
-            Call Us
-          </a>
         </div>
       )}
+      <div className="md:hidden absolute right-5 top-5">
+        <a
+          href="tel:0415591993"
+          className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+        >
+          Call Us
+        </a>
+      </div>
     </nav>
   );
 }
