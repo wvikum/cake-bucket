@@ -26,7 +26,7 @@ export default function GallerySlider() {
   return (
     <div className="w-full flex justify-center items-center">
       <div
-        className="w-full md:w-3/4 lg:w-2/3 p-4 border-4 border-blue-300 rounded-lg shadow-lg"
+        className="w-full md:w-3/4 lg:w-2/3 p-4 border-4 border-red-300 rounded-lg shadow-lg"
         style={{ boxShadow: "0 0 20px rgba(255, 0, 127, 0.6)" }}
       >
         <Slider {...settings}>
