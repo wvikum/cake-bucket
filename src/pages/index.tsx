@@ -48,6 +48,16 @@ export default function Home() {
               is perfect.
             </p>
           </div>
+          <div className="relative w-full h-[500px] md:order-6">
+            <Image
+              src="/featured/featured3.jpg"
+              alt="Featured Cake 3"
+              fill
+              style={{ objectFit: "cover" }}
+              className="rounded-lg shadow-lg"
+              fetchpriority="high"
+            />
+          </div>
           <div className="flex flex-col justify-center md:order-5">
             <h2 className="text-3xl font-bold text-pink-700 mb-4">
               Our Passion
@@ -62,16 +72,6 @@ export default function Home() {
               us on a journey of delightful flavors and stunning designs, and
               let us be a part of your sweetest moments.
             </p>
-          </div>
-          <div className="relative w-full h-[500px] md:order-6">
-            <Image
-              src="/featured/featured3.jpg"
-              alt="Featured Cake 3"
-              fill
-              style={{ objectFit: "cover" }}
-              className="rounded-lg shadow-lg"
-              fetchpriority="high"
-            />
           </div>
         </div>
         <div className="bg-pink-100 p-6 rounded-lg shadow-md mb-8">

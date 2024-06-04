@@ -15,8 +15,8 @@ export default function Navbar() {
 
   return (
     <nav className="bg-pink-300 p-0 z-50 relative">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="md:hidden flex items-center">
+      <div className="container mx-auto flex justify-between items-center h-16 md:h-32">
+        <div className="md:hidden flex items-center pl-2">
           <button
             onClick={toggleMenu}
             className="text-black focus:outline-none"
@@ -37,15 +37,17 @@ export default function Navbar() {
             </svg>
           </button>
         </div>
-        <div className="flex-grow flex justify-center md:justify-start">
+        <div className="flex-grow flex items-center justify-left pl-32 relative md:justify-start md:pl-0">
           <Link href="/" legacyBehavior>
             <a className="cursor-pointer">
-              <Image
-                src="/logo/logo.png"
-                alt="Cake Bucket Logo"
-                width={120}
-                height={120}
-              />
+              <div className="relative w-12 h-12 md:w-32 md:h-32">
+                <Image
+                  src="/logo/logo.png"
+                  alt="Cake Bucket Logo"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
             </a>
           </Link>
         </div>
@@ -87,14 +89,14 @@ export default function Navbar() {
             </a>
           </Link>
         </div>
-      </div>
-      <div className="hidden md:block absolute top-5 right-5">
-        <a
-          href="tel:0415591993"
-          className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
-        >
-          Call Us
-        </a>
+        <div className="hidden md:block absolute top-5 right-5">
+          <a
+            href="tel:0415591993"
+            className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+          >
+            Call Us
+          </a>
+        </div>
       </div>
       {isOpen && (
         <div className="md:hidden bg-pink-300 w-full p-2">
@@ -143,7 +145,7 @@ export default function Navbar() {
       <div className="md:hidden absolute right-5 top-5">
         <a
           href="tel:0415591993"
-          className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+          className="bg-pink-700 text-white px-2 py-1 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
         >
           Call Us
         </a>
