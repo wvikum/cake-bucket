@@ -1,14 +1,23 @@
-import Layout from "../components/Layout";
 import { useState } from "react";
+import Layout from "../components/Layout";
+import axios from "axios";
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export default function Contact() {
   const address = "10 Woodvale Road, Boronia Victoria 3155, Australia";
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
+
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -17,9 +26,23 @@ export default function Contact() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic
+    try {
+      const response = await axios.post("/api/send-contact", formData);
+      if (response.status === 200) {
+        setStatusMessage("Message sent successfully!");
+      } else {
+        setStatusMessage("Failed to send message.");
+      }
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatusMessage("Failed to send message.");
+    }
   };
 
   return (
@@ -48,7 +71,7 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-gray-900"
                     required
                   />
                 </div>
@@ -65,7 +88,7 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-gray-900"
                     required
                   />
                 </div>
@@ -81,7 +104,7 @@ export default function Contact() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500"
+                    className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-gray-900"
                     required
                   />
                 </div>
@@ -92,6 +115,11 @@ export default function Contact() {
                   Send
                 </button>
               </form>
+              {statusMessage && (
+                <div className="mt-4 text-center text-gray-700">
+                  {statusMessage}
+                </div>
+              )}
             </div>
             <div className="md:w-1/2 mt-8 md:mt-0">
               <h2 className="text-3xl font-semibold text-pink-700 mb-4">
@@ -132,9 +160,7 @@ export default function Contact() {
                 <li>Wed: 09:00 am – 05:00 pm</li>
                 <li>Thu: 09:00 am – 05:00 pm</li>
                 <li>Fri: 09:00 am – 05:00 pm</li>
-                <li>
-                  Sat: <strong>09:00 am – 05:00 pm</strong>
-                </li>
+                <li>Sat:09:00 am – 05:00 pm</li>
                 <li>Sun: 09:00 am – 05:00 pm</li>
               </ul>
               <div className="w-full h-64">
