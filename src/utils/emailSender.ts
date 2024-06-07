@@ -26,7 +26,7 @@ const emailSender = async (
             },
             To: [
               {
-                Email: "cakebucketsl@gmail.com", // The recipient (you)
+                Email: "cakebucketsl@gmail.com",
                 Name: "Cake Bucket",
               },
             ],
@@ -38,6 +38,7 @@ const emailSender = async (
 
     return { success: true };
   } catch (error) {
+    console.error("Email sending error:", error);
     return { success: false, error: (error as Error).message };
   }
 };
