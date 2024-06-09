@@ -27,7 +27,7 @@ export default async function handler(
     const subject = `New Subscription Request`;
     const text = `You have a new subscription request from:\n\nEmail: ${email}\nSubscribed on: ${new Date().toLocaleString()}`;
 
-    const result = await emailSender(subject, text);
+    const result = await emailSender(subject, text, email);
 
     if (result.success) {
       res
@@ -40,6 +40,6 @@ export default async function handler(
       });
     }
   } else {
-    res.status(405).json({ error: "Method not allowed" });
+    res.status(405).json({ error: "Something went wrong..!" });
   }
 }
