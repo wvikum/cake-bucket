@@ -1,8 +1,37 @@
+import { useState } from "react";
 import Layout from "../components/Layout";
 import Image from "next/image";
+import axios from "axios";
 import TestimonialSlider from "../components/TestimonialSlider";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevents the default form submission
+    if (!email) {
+      setStatusMessage("Please type your email.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("/api/subscribe", { email });
+      if (response.status === 200) {
+        setStatusMessage("Subscribed successfully!");
+      } else {
+        setStatusMessage("Failed to subscribe.");
+      }
+      setEmail("");
+    } catch (error: any) {
+      setStatusMessage(error.response?.data?.error || "Failed to subscribe.");
+    }
+  };
+
   return (
     <Layout>
       <div className="w-full p-3 bg-gray-100">
@@ -92,16 +121,25 @@ export default function Home() {
             Stay updated with our latest offerings, special discounts, and more.
             Subscribe now!
           </p>
-          <div className="flex justify-center">
+          <form onSubmit={handleSubscribe} className="flex justify-center">
             <input
               type="email"
               placeholder="Enter your email"
-              className="p-2 border border-pink-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-700"
+              value={email}
+              onChange={handleEmailChange}
+              className="p-2 border border-pink-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-pink-700 text-gray-900"
+              required
             />
-            <button className="bg-pink-700 text-white p-2 rounded-r-lg hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-700">
+            <button
+              type="submit"
+              className="bg-pink-700 text-white p-2 rounded-r-lg hover:bg-pink-800 focus:outline-none focus:ring-2 focus:ring-pink-700"
+            >
               Subscribe
             </button>
-          </div>
+          </form>
+          {statusMessage && (
+            <p className="text-center text-pink-700 mt-4">{statusMessage}</p>
+          )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {/* Add other content here */}
