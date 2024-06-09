@@ -45,7 +45,9 @@ export default function Reviews() {
                   backgroundColors[index % 2]
                 } p-6 rounded-lg shadow-md`}
               >
-                <h2 className="text-2xl font-bold mb-2">{review.name}</h2>
+                <h2 className="text-pink-700 text-2xl font-bold mb-2">
+                  {review.name}
+                </h2>
                 <p className="text-pink-700 mb-1">{review.cakeType}</p>
                 <div className="flex items-center mb-4">
                   {Array.from({ length: review.rating }).map((_, i) => (

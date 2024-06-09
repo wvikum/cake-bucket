@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cake Bucket Website
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app), and enhanced with several modern web technologies to deliver an efficient and feature-rich experience for users.
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository and navigate to the project directory:
 
 ```bash
+git clone https://github.com/wvikum/cake-bucket.git
+cd cake-bucket
+
+npm install
+
+To start the development server, use:
+
+nvm install 18.17.0
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result. The page auto-updates as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+	•	Next.js: A React framework for server-side rendering, static site generation, and fast development.
+	•	Tailwind CSS: A utility-first CSS framework for rapid UI development with custom styles.
+	•	Mailjet: An email service provider used for sending emails from the website, such as order confirmations and contact forms.
+	•	AWS Amplify: A set of tools and services that enable the front-end to connect with AWS services for authentication, storage, and API management.
+	•	Mailboxlayer: An email validation API used to verify and validate email addresses to ensure they are deliverable.
+	•	AWS Secrets Manager: Manages secrets such as API keys securely, which are retrieved dynamically in the application.
 
-To learn more about Next.js, take a look at the following resources:
+## File Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+	•	app/page.tsx: The main page component where you can start editing the website. Auto-updates as you edit.
+	•	/components: Contains reusable UI components.
+	•	/styles: Global and component-level styles using Tailwind CSS.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+We are using AWS Amplify for deployments.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Follow the AWS Amplify documentation to configure and deploy the application. For more details, refer to the AWS Amplify Documentation.
