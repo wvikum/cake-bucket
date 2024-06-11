@@ -16,8 +16,8 @@ export default function Navbar() {
   return (
     <nav className="bg-pink-300 p-0 z-50 relative">
       <div className="container mx-auto flex justify-between items-center h-16 md:h-32">
-        <div className="flex-grow flex items-center pl-2 md:pl-0">
-          <div className="md:hidden flex items-center w-1/3">
+        <div className="flex-grow flex items-center pl-0 md:pl-0">
+          <div className="md:hidden flex items-center pl-2 w-1/3">
             <button
               onClick={toggleMenu}
               className="text-black focus:outline-none"
