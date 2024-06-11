@@ -16,40 +16,52 @@ export default function Navbar() {
   return (
     <nav className="bg-pink-300 p-0 z-50 relative">
       <div className="container mx-auto flex justify-between items-center h-16 md:h-32">
-        <div className="md:hidden flex items-center pl-2">
-          <button
-            onClick={toggleMenu}
-            className="text-black focus:outline-none"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+        <div className="flex-grow flex items-center pl-2 md:pl-0">
+          <div className="md:hidden flex items-center w-1/3">
+            <button
+              onClick={toggleMenu}
+              className="text-black focus:outline-none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              ></path>
-            </svg>
-          </button>
-        </div>
-        <div className="flex-grow flex items-center justify-left pl-32 relative md:justify-start md:pl-0">
-          <Link href="/" legacyBehavior>
-            <a className="cursor-pointer">
-              <div className="relative w-12 h-12 md:w-32 md:h-32">
-                <Image
-                  src="/logo/logo.png"
-                  alt="Cake Bucket Logo"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d={
+                    isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
+                  }
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div className="flex-grow flex items-center justify-center md:justify-start md:pl-0">
+            <Link href="/" legacyBehavior>
+              <a className="cursor-pointer">
+                <div className="relative w-12 h-12 md:w-32 md:h-32">
+                  <Image
+                    src="/logo/logo.png"
+                    alt="Cake Bucket Logo"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
+              </a>
+            </Link>
+          </div>
+          <div className="md:hidden w-1/3 flex justify-end pr-2">
+            <a
+              href="tel:0415591993"
+              className="bg-pink-700 text-white px-2 py-1 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+            >
+              Call Us
             </a>
-          </Link>
+          </div>
         </div>
         <div className="hidden md:flex space-x-12 transform -translate-x-8">
           <Link href="/gallery" legacyBehavior>
@@ -142,14 +154,6 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-      <div className="md:hidden absolute right-5 top-5">
-        <a
-          href="tel:0415591993"
-          className="bg-pink-700 text-white px-2 py-1 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
-        >
-          Call Us
-        </a>
-      </div>
     </nav>
   );
 }
