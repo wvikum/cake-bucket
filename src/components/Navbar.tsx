@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { FiMenu, FiX, FiPhoneCall } from "react-icons/fi"; // Modern icon library
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,36 +15,25 @@ export default function Navbar() {
   const isActive = (pathname: string) => router.pathname === pathname;
 
   return (
-    <nav className="bg-pink-300 p-0 z-50 relative">
-      <div className="container mx-auto flex justify-between items-center h-16 md:h-32">
-        <div className="flex-grow flex items-center pl-0 md:pl-0">
-          <div className="md:hidden flex items-center pl-2 w-1/3">
+    <nav className="bg-gradient-to-r from-pink-300 to-pink-400 p-0 z-50 shadow-lg relative">
+      <div className="container mx-auto flex justify-between items-center h-16 md:h-36 px-4 md:px-8">
+        <div className="flex-grow flex items-center">
+          <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
               className="text-black focus:outline-none"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d={
-                    isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-                  }
-                ></path>
-              </svg>
+              {isOpen ? (
+                <FiX className="w-8 h-8 text-black" />
+              ) : (
+                <FiMenu className="w-8 h-8 text-black" />
+              )}
             </button>
           </div>
-          <div className="flex-grow flex items-center justify-center md:justify-start md:pl-0">
+          <div className="flex-grow flex items-center justify-center md:justify-start">
             <Link href="/" legacyBehavior>
               <a className="cursor-pointer">
-                <div className="relative w-12 h-12 md:w-32 md:h-32">
+                <div className="relative w-16 h-16 md:w-36 md:h-36">
                   <Image
                     src="/logo/logo.png"
                     alt="Cake Bucket Logo"
@@ -54,106 +44,53 @@ export default function Navbar() {
               </a>
             </Link>
           </div>
-          <div className="md:hidden w-1/3 flex justify-end pr-2">
+          <div className="md:hidden flex justify-end">
             <a
               href="tel:0415591993"
-              className="bg-pink-700 text-white px-2 py-1 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
+              className="text-pink-700 p-2 rounded-full hover:text-pink-800 transition duration-300"
             >
-              Call Us
+              <FiPhoneCall className="w-6 h-6 animate-bounce" />
             </a>
           </div>
         </div>
-        <div className="hidden md:flex space-x-12 transform -translate-x-8">
-          <Link href="/gallery" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 text-lg font-bold ${
-                isActive("/gallery") ? "text-pink-900" : ""
-              }`}
-            >
-              Gallery
-            </a>
-          </Link>
-          <Link href="/reviews" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 text-lg font-bold ${
-                isActive("/reviews") ? "text-pink-900" : ""
-              }`}
-            >
-              Reviews
-            </a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 text-lg font-bold ${
-                isActive("/contact") ? "text-pink-900" : ""
-              }`}
-            >
-              Contact Us
-            </a>
-          </Link>
-          <Link href="/order" legacyBehavior>
-            <a
-              className={`text-black hover:text-pink-700 text-lg font-bold ${
-                isActive("/order") ? "text-pink-900" : ""
-              }`}
-            >
-              How to Order
-            </a>
-          </Link>
-        </div>
-        <div className="hidden md:block absolute top-5 right-5">
-          <a
-            href="tel:0415591993"
-            className="bg-pink-700 text-white px-4 py-2 rounded-lg font-bold hover:bg-pink-800 transition duration-300"
-          >
-            Call Us
-          </a>
+        <div className="hidden md:flex space-x-10 pr-28">
+          {["/gallery", "/reviews", "/contact", "/order"].map((path, index) => (
+            <Link href={path} key={index} legacyBehavior>
+              <a
+                className={`text-black hover:text-pink-700 text-lg font-bold ${
+                  isActive(path) ? "text-pink-900" : ""
+                }`}
+              >
+                {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden bg-pink-300 w-full p-2">
-          <Link href="/gallery" legacyBehavior>
-            <a
-              className={`block text-black hover:text-pink-700 p-2 ${
-                isActive("/gallery") ? "text-pink-900 font-bold" : ""
-              }`}
-              onClick={toggleMenu}
-            >
-              Gallery
-            </a>
-          </Link>
-          <Link href="/reviews" legacyBehavior>
-            <a
-              className={`block text-black hover:text-pink-700 p-2 ${
-                isActive("/reviews") ? "text-pink-900 font-bold" : ""
-              }`}
-              onClick={toggleMenu}
-            >
-              Reviews
-            </a>
-          </Link>
-          <Link href="/contact" legacyBehavior>
-            <a
-              className={`block text-black hover:text-pink-700 p-2 ${
-                isActive("/contact") ? "text-pink-900 font-bold" : ""
-              }`}
-              onClick={toggleMenu}
-            >
-              Contact Us
-            </a>
-          </Link>
-          <Link href="/order" legacyBehavior>
-            <a
-              className={`block text-black hover:text-pink-700 p-2 ${
-                isActive("/order") ? "text-pink-900 font-bold" : ""
-              }`}
-              onClick={toggleMenu}
-            >
-              How to Order
-            </a>
-          </Link>
+        <div className="md:hidden bg-gradient-to-r from-pink-300 to-pink-400 w-full p-4 space-y-2 shadow-md">
+          {["/gallery", "/reviews", "/contact", "/order"].map((path, index) => (
+            <Link href={path} key={index} legacyBehavior>
+              <a
+                className={`block text-black hover:text-pink-700 p-2 rounded ${
+                  isActive(path) ? "text-pink-900 font-bold" : ""
+                }`}
+                onClick={toggleMenu}
+              >
+                {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+              </a>
+            </Link>
+          ))}
         </div>
       )}
+      <div className="hidden md:block absolute top-0 right-0 mt-4 mr-6 animate-pulse">
+        <a
+          href="tel:0415591993"
+          className="bg-pink-700 text-white px-4 py-2 rounded-full font-bold hover:bg-pink-800 transition duration-300 flex items-center"
+        >
+          <FiPhoneCall className="mr-2 animate-ringing" /> Call Us
+        </a>
+      </div>
     </nav>
   );
 }
